@@ -28,14 +28,15 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /***
  * DONE - TODO - Put project up on GitHub (public)
- * TODO - Remove text from buttons
+ * DONE - TODO - Remove text from buttons
  * TODO - Add all custom colors to buttonColors array
  * TODO - Streamline CustomColor retrieval
  * TODO - Randomize JButton color assignment
  * TODO - Assure target color is always among displayed colors
  * TODO - Write a reset() method to reset colors and target color
  * TODO - Get RGB values for hundreds of colors
- */
+ * TODO - Add logic to apply correct grammar to instruction text e.g. "Click ('a' vs 'an') xxxx button!"
+ **/
 
 public class MainGameFrame extends JFrame {
     public static Container base = new Container();
@@ -70,12 +71,12 @@ public class MainGameFrame extends JFrame {
 
         Dimension bDimension = new Dimension(50, 50);
         List<JButton> jButtonList = new ArrayList<JButton>();
-        JButton button1 = new JButton("1");
-        JButton button2 = new JButton("2");
-        JButton button3 = new JButton("3");
-        JButton button4 = new JButton("4");
-        JButton button5 = new JButton("5");
-        JButton button6 = new JButton("6");
+        JButton button1 = new JButton();
+        JButton button2 = new JButton();
+        JButton button3 = new JButton();
+        JButton button4 = new JButton();
+        JButton button5 = new JButton();
+        JButton button6 = new JButton();
 
         final JButton[] jButtonArray = { button1, button2, button3, button4, button5, button6 };
         for (int i = 0; i < jButtonArray.length; i++) {
