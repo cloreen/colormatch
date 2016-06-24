@@ -27,10 +27,10 @@ import java.util.concurrent.ThreadLocalRandom;
  * */
 
 /***
- * TODO - Put project up on GitHub (public)
- * TODO - Streamline CustomColor retrieval
+ * DONE - TODO - Put project up on GitHub (public)
  * TODO - Remove text from buttons
  * TODO - Add all custom colors to buttonColors array
+ * TODO - Streamline CustomColor retrieval
  * TODO - Randomize JButton color assignment
  * TODO - Assure target color is always among displayed colors
  * TODO - Write a reset() method to reset colors and target color
