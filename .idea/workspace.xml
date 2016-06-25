@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66ab303c-91c2-416b-9eac-62304089818f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -40,13 +39,13 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36090225">
-              <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.5112782">
+              <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3244#3253#0" expanded="true" />
-                <element signature="e#4021#4449#0" expanded="true" />
-                <element signature="e#4448#4449#0" expanded="true" />
+                <element signature="e#3227#3236#0" expanded="true" />
+                <element signature="e#4004#4432#0" expanded="true" />
+                <element signature="e#4431#4432#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -487,7 +486,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466804926058</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added many custom colors, refactored CustomColor class, randomized button color assignment, updated TODOS">
+      <created>1466865090084</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1466865090084</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -533,7 +538,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Git repo, added project to GItHub, updated TODOS" />
     <MESSAGE value="Removed labels from buttons on first display, updated TODOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed labels from buttons on first display, updated TODOS" />
+    <MESSAGE value="Added many custom colors, refactored CustomColor class, randomized button color assignment, updated TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added many custom colors, refactored CustomColor class, randomized button color assignment, updated TODOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -597,13 +603,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36090225">
-          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.5112782">
+          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3244#3253#0" expanded="true" />
-            <element signature="e#4021#4449#0" expanded="true" />
-            <element signature="e#4448#4449#0" expanded="true" />
+            <element signature="e#3227#3236#0" expanded="true" />
+            <element signature="e#4004#4432#0" expanded="true" />
+            <element signature="e#4431#4432#0" expanded="true" />
           </folding>
         </state>
       </provider>

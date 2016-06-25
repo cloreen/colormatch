@@ -27,17 +27,17 @@ import java.util.concurrent.ThreadLocalRandom;
  * */
 
 /***
- * DONE - TODO - Put project up on GitHub (public)
- * DONE - TODO - Remove text from buttons
- * DONE - TODO - Add all custom colors to buttonColors array
- * DONE - TODO - Streamline CustomColor retrieval
- * DONE - TODO - Randomize JButton color assignment
- * DONE - TODO - Get RGB values for hundreds of colors
  * TODO - Update target color to reflect all possible colors
  * TODO - Ensure each button's color is unique in the grid
  * TODO - Assure target color is always among displayed colors
  * TODO - Write a reset() method to reset colors and target color
- * TODO - Add logic to apply correct grammar to instruction text e.g. "Click ('a' vs 'an') xxxx button!"
+ * DONE - Add logic to apply correct grammar to instruction text e.g. "Click ('a' vs 'an') xxxx button!" - changed 'a' to 'the'
+ * DONE - Put project up on GitHub (public)
+ * DONE - Remove text from buttons
+ * DONE - Add all custom colors to buttonColors array
+ * DONE - Streamline CustomColor retrieval
+ * DONE - Randomize JButton color assignment
+ * DONE - Get RGB values for hundreds of colors
  **/
 
 public class MainGameFrame extends JFrame {
@@ -67,7 +67,7 @@ public class MainGameFrame extends JFrame {
         String colorStr = "";
         JLabel instr = new JLabel("Click a button!", JLabel.CENTER);
 
-        JLabel targetColor = new JLabel("Click a " + getTargetColor() + " button!", JLabel.CENTER);
+        JLabel targetColor = new JLabel("Click the " + getTargetColor() + " button!", JLabel.CENTER);
 
 /*
         instr.setSize(100, 50);
