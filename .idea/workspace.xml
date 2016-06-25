@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66ab303c-91c2-416b-9eac-62304089818f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -40,14 +40,24 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41102758">
-              <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.36090225">
+              <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2649#2658#0" expanded="true" />
-                <element signature="e#3364#3792#0" expanded="true" />
-                <element signature="e#3791#3792#0" expanded="true" />
+                <element signature="e#3244#3253#0" expanded="true" />
+                <element signature="e#4021#4449#0" expanded="true" />
+                <element signature="e#4448#4449#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Color.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/awt/Color.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -56,10 +66,10 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
               <folding>
-                <element signature="e#237#238#0" expanded="true" />
-                <element signature="e#278#279#0" expanded="true" />
+                <element signature="e#183#184#0" expanded="true" />
+                <element signature="e#216#217#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,6 +135,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColors.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       </list>
@@ -470,7 +481,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466804533442</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Removed labels from buttons on first display, updated TODOS">
+      <created>1466804926058</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1466804926058</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -515,7 +532,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Git repo, added project to GItHub, updated TODOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Git repo, added project to GItHub, updated TODOS" />
+    <MESSAGE value="Removed labels from buttons on first display, updated TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed labels from buttons on first display, updated TODOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -558,26 +576,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/awt/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
           <folding>
-            <element signature="e#237#238#0" expanded="true" />
-            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41102758">
-          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.36090225">
+          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2649#2658#0" expanded="true" />
-            <element signature="e#3364#3792#0" expanded="true" />
-            <element signature="e#3791#3792#0" expanded="true" />
+            <element signature="e#3244#3253#0" expanded="true" />
+            <element signature="e#4021#4449#0" expanded="true" />
+            <element signature="e#4448#4449#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -29,12 +29,14 @@ import java.util.concurrent.ThreadLocalRandom;
 /***
  * DONE - TODO - Put project up on GitHub (public)
  * DONE - TODO - Remove text from buttons
- * TODO - Add all custom colors to buttonColors array
- * TODO - Streamline CustomColor retrieval
- * TODO - Randomize JButton color assignment
+ * DONE - TODO - Add all custom colors to buttonColors array
+ * DONE - TODO - Streamline CustomColor retrieval
+ * DONE - TODO - Randomize JButton color assignment
+ * DONE - TODO - Get RGB values for hundreds of colors
+ * TODO - Update target color to reflect all possible colors
+ * TODO - Ensure each button's color is unique in the grid
  * TODO - Assure target color is always among displayed colors
  * TODO - Write a reset() method to reset colors and target color
- * TODO - Get RGB values for hundreds of colors
  * TODO - Add logic to apply correct grammar to instruction text e.g. "Click ('a' vs 'an') xxxx button!"
  **/
 
@@ -43,9 +45,15 @@ public class MainGameFrame extends JFrame {
     public static Container container1 = new Container();
     public static Container container2 = new Container();
     public static int colorIndex;
-    public static CustomColor customColor = new CustomColor();
+//    public static CustomColor customColor = new CustomColor();
+    public static CustomColor customColor;
 
-    public static Color buttonColors[] = {Color.RED, Color.GREEN, Color.GRAY, customColor.getCustomColor(CustomColor.CustColor.LIGHT_BLUE), Color.ORANGE, Color.YELLOW};
+    public static Color buttonColors[] = { Color.RED, Color.GREEN, Color.GRAY, Color.ORANGE, Color.YELLOW,
+            Color.PINK, Color.MAGENTA, Color.BLUE, Color.BLACK, Color.WHITE, CustomColor.LIGHT_BLUE,
+            CustomColor.BEIGE, CustomColor.DARK_ORANGE, CustomColor.LIGHT_BROWN, CustomColor.GOLD,
+            CustomColor.LIME, CustomColor.LIGHT_GRAY, CustomColor.LIGHT_GREEN, CustomColor.PEACH,
+            CustomColor.ORCHID, CustomColor.PURPLE, CustomColor.RUST, CustomColor.TEAL , CustomColor.SALMON,
+            CustomColor.STEEL_BLUE, CustomColor.VIOLET};
 
     public MainGameFrame() {
         super("Game Frame");
@@ -81,7 +89,7 @@ public class MainGameFrame extends JFrame {
         final JButton[] jButtonArray = { button1, button2, button3, button4, button5, button6 };
         for (int i = 0; i < jButtonArray.length; i++) {
             jButtonArray[i].setSize(bDimension);
-            jButtonArray[i].setBackground(buttonColors[i]);
+            jButtonArray[i].setBackground(buttonColors[ThreadLocalRandom.current().nextInt(0, jButtonArray.length + 1)]);
             jButtonArray[i].setMnemonic(KeyEvent.VK_E);
             jButtonArray[i].setActionCommand("enable");
             final int finalI1 = i;
@@ -124,7 +132,7 @@ public class MainGameFrame extends JFrame {
     }
 
     private String getTargetColor() {
-       colorIndex = ThreadLocalRandom.current().nextInt(0, 5 + 1);
+       colorIndex = ThreadLocalRandom.current().nextInt(0, 25 + 1);
        String colorStr = "";
         switch(colorIndex) {
             case 0:
@@ -137,7 +145,7 @@ public class MainGameFrame extends JFrame {
                 colorStr = "GRAY";
                 break;
             case 3:
-                colorStr = "BLUE";
+                colorStr = "ORANGE";
                 break;
             case 4:
                 colorStr = "ORANGE";
