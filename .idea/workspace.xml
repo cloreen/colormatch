@@ -39,8 +39,8 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5112782">
-              <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.44110274">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3227#3236#0" expanded="true" />
@@ -492,7 +492,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466865090084</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated instruction text, TODOS">
+      <created>1466865287834</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1466865287835</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -539,7 +545,8 @@
     <MESSAGE value="Created Git repo, added project to GItHub, updated TODOS" />
     <MESSAGE value="Removed labels from buttons on first display, updated TODOS" />
     <MESSAGE value="Added many custom colors, refactored CustomColor class, randomized button color assignment, updated TODOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added many custom colors, refactored CustomColor class, randomized button color assignment, updated TODOS" />
+    <MESSAGE value="Updated instruction text, TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated instruction text, TODOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -603,8 +610,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5112782">
-          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.44110274">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3227#3236#0" expanded="true" />

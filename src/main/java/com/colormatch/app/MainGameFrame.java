@@ -27,10 +27,10 @@ import java.util.concurrent.ThreadLocalRandom;
  * */
 
 /***
- * TODO - Update target color to reflect all possible colors
  * TODO - Ensure each button's color is unique in the grid
  * TODO - Assure target color is always among displayed colors
  * TODO - Write a reset() method to reset colors and target color
+ * DONE - Update target color to reflect all possible colors
  * DONE - Add logic to apply correct grammar to instruction text e.g. "Click ('a' vs 'an') xxxx button!" - changed 'a' to 'the'
  * DONE - Put project up on GitHub (public)
  * DONE - Remove text from buttons
@@ -148,10 +148,70 @@ public class MainGameFrame extends JFrame {
                 colorStr = "ORANGE";
                 break;
             case 4:
-                colorStr = "ORANGE";
+                colorStr = "YELLOW";
                 break;
             case 5:
-                colorStr = "YELLOW";
+                colorStr = "PINK";
+                break;
+            case 6:
+                colorStr = "MAGENTA";
+                break;
+            case 7:
+                colorStr = "BLUE";
+                break;
+            case 8:
+                colorStr = "BLACK";
+                break;
+            case 9:
+                colorStr = "WHITE";
+                break;
+            case 10:
+                colorStr = "LIGHT BLUE";
+                break;
+            case 11:
+                colorStr = "BEIGE";
+                break;
+            case 12:
+                colorStr = "DARK ORANGE";
+                break;
+            case 13:
+                colorStr = "LIGHT BROWN";
+                break;
+            case 14:
+                colorStr = "GOLD";
+                break;
+            case 15:
+                colorStr = "LIME";
+                break;
+            case 16:
+                colorStr = "LIGHT GRAY";
+                break;
+            case 17:
+                colorStr = "LIGHT GREEN";
+                break;
+            case 18:
+                colorStr = "PEACH";
+                break;
+            case 19:
+                colorStr = "ORCHID";
+                break;
+            case 20:
+                colorStr = "PURPLE";
+                break;
+            case 21:
+                colorStr = "RUST";
+                break;
+            case 22:
+                colorStr = "TEAL";
+                break;
+            case 23:
+                colorStr = "SALMON";
+                break;
+            case 24:
+                colorStr = "STEEL BLUE";
+                break;
+            case 25:
+                colorStr = "VIOLET";
                 break;
         }
         return colorStr;
