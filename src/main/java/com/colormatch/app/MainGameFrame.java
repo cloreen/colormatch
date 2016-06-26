@@ -28,8 +28,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * */
 
 /***
- * TODO - Assure target color is always among displayed colors
  * TODO - Write a reset() method to reset colors and target color
+ * DONE - Assure target color is always among displayed colors
  * DONE - Ensure each button's color is unique in the grid
  * DONE - Update target color to reflect all possible colors
  * DONE - Add logic to apply correct grammar to instruction text e.g. "Click ('a' vs 'an') xxxx button!" - changed 'a' to 'the'
@@ -46,6 +46,7 @@ public class MainGameFrame extends JFrame {
     public static Container container1 = new Container();
     public static Container container2 = new Container();
     public static int colorIndex;
+    public static int colorInt;
 //    public static CustomColor customColor = new CustomColor();
     public static CustomColor customColor;
 
@@ -68,7 +69,6 @@ public class MainGameFrame extends JFrame {
         String colorStr = "";
         JLabel instr = new JLabel("Click a button!", JLabel.CENTER);
 
-        JLabel targetColor = new JLabel("Click the " + getTargetColor() + " button!", JLabel.CENTER);
 
 /*
         instr.setSize(100, 50);
@@ -91,6 +91,12 @@ public class MainGameFrame extends JFrame {
         List<Integer> randIntList = new ArrayList<Integer>();
 //        addToRandomIntList(jButtonArray, (ArrayList<Integer>) randIntList);
         int[] randomInts = new Random().ints(0, 26).distinct().limit(6).toArray();
+        System.out.print("The numbers randomly generated are: ");
+        for (int i = 0; i < randomInts.length; i++) {
+            System.out.print(" " + randomInts[i] + " ");
+        }
+
+        JLabel targetColor = new JLabel("Click the " + getTargetColor(randomInts) + " button!", JLabel.CENTER);
 /*
         for (int i = 0; i < jButtonArray.length; i++) {
             int randInt = ThreadLocalRandom.current().nextInt(0, 25 + 1);
@@ -210,10 +216,12 @@ public class MainGameFrame extends JFrame {
         container2.setLayout(grid);
     }
 
-    private String getTargetColor() {
+    private String getTargetColor(int[] randomInts) {
        colorIndex = ThreadLocalRandom.current().nextInt(0, 6);
+       colorInt = randomInts[colorIndex];
+        System.out.println("The target color index is: " + colorInt);
        String colorStr = "";
-        switch(colorIndex) {
+        switch(colorInt) {
             case 0:
                 colorStr = "RED";
                 break;
