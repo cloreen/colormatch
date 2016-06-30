@@ -8,7 +8,13 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * COLOR MATCH is a game where the user is given a color to to click,
@@ -28,7 +34,9 @@ import java.util.concurrent.ThreadLocalRandom;
  * */
 
 /***
+ * TODO - Move confirmation message from button to top JLabel
  * TODO - Write a reset() method to reset colors and target color
+ * DONE - Set top label to reset after alerting the user of an incorrect choice
  * DONE - Assure target color is always among displayed colors
  * DONE - Ensure each button's color is unique in the grid
  * DONE - Update target color to reflect all possible colors
@@ -41,12 +49,18 @@ import java.util.concurrent.ThreadLocalRandom;
  * DONE - Get RGB values for hundreds of colors
  **/
 
-public class MainGameFrame extends JFrame {
+public class MainGameFrame extends JFrame implements ActionListener {
     public static Container base = new Container();
     public static Container container1 = new Container();
     public static Container container2 = new Container();
+    final Lock lock = new ReentrantLock();
+    final Condition textHasChanged = lock.newCondition();
+    public static JLabel instr;
     public static int colorIndex;
     public static int colorInt;
+    public static int tempInt;
+    public static int secondsToWait;
+    public static JButton[] jButtonArray = {};
 //    public static CustomColor customColor = new CustomColor();
     public static CustomColor customColor;
 
@@ -56,6 +70,7 @@ public class MainGameFrame extends JFrame {
             CustomColor.LIME, CustomColor.LIGHT_GRAY, CustomColor.LIGHT_GREEN, CustomColor.PEACH,
             CustomColor.ORCHID, CustomColor.PURPLE, CustomColor.RUST, CustomColor.TEAL , CustomColor.SALMON,
             CustomColor.STEEL_BLUE, CustomColor.VIOLET};
+
 
     public MainGameFrame() {
         super("Game Frame");
@@ -67,7 +82,11 @@ public class MainGameFrame extends JFrame {
         panel.setLayout(panelGrid);
 
         String colorStr = "";
-        JLabel instr = new JLabel("Click a button!", JLabel.CENTER);
+        instr = new JLabel("Click a button!", JLabel.CENTER);
+        MyListener labelListener = new MyListener(instr);
+        instr.addPropertyChangeListener(labelListener);
+
+
 
 
 /*
@@ -80,14 +99,14 @@ public class MainGameFrame extends JFrame {
 
         Dimension bDimension = new Dimension(50, 50);
         List<JButton> jButtonList = new ArrayList<JButton>();
-        JButton button1 = new JButton("1");
-        JButton button2 = new JButton("2");
-        JButton button3 = new JButton("3");
-        JButton button4 = new JButton("4");
-        JButton button5 = new JButton("5");
-        JButton button6 = new JButton("6");
+        JButton button1 = new JButton();
+        JButton button2 = new JButton();
+        JButton button3 = new JButton();
+        JButton button4 = new JButton();
+        JButton button5 = new JButton();
+        JButton button6 = new JButton();
 
-        final JButton[] jButtonArray = { button1, button2, button3, button4, button5, button6 };
+        jButtonArray = new JButton[]{button1, button2, button3, button4, button5, button6};
         List<Integer> randIntList = new ArrayList<Integer>();
 //        addToRandomIntList(jButtonArray, (ArrayList<Integer>) randIntList);
         int[] randomInts = new Random().ints(0, 26).distinct().limit(6).toArray();
@@ -124,30 +143,154 @@ public class MainGameFrame extends JFrame {
             }
         }
 */
+
+
         for (int i = 0; i < jButtonArray.length; i++) {
             jButtonArray[i].setSize(bDimension);
             jButtonArray[i].setBackground(buttonColors[randomInts[i]]);
             jButtonArray[i].setMnemonic(KeyEvent.VK_E);
             jButtonArray[i].setActionCommand("enable");
-            final int finalI1 = i;
+            tempInt = i;
+//            MyListener listener = new MyListener(jButtonArray[i], instr, tempInt, colorIndex);
+            final int finalI = i;
             jButtonArray[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 //                    jButtonArray[finalI].setBackground(Color.RED);
-                    if (finalI1 == colorIndex) {
-                        jButtonArray[finalI1].setText("You were right!");
+
+                    if (finalI == colorIndex) {
+                        instr.setText("You were right!");
                     } else {
-                        jButtonArray[finalI1].setText("Wrong one!!");
+                        try {
+                            changeInstructionText();
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+
+                        System.out.println("The label text is now " + instr.getText());
+
+/*                        String labelText = instr.getText();
+                        if(labelText.contains("Wrong"))
+                            instr = new JLabel("Click a button!");
+
+
+                        Timer timer = new Timer(0, this);
+                        timer.setInitialDelay(3000);
+
+//                        resetInstructionText();
+//                        instr.setText("Wrong one!!");
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }*/
+//                        instr.setText("Click a button!");
+                        System.out.println("Now leaving actionPerformed() method." + " Current time is: " + System.currentTimeMillis());
                     }
                 }
             });
             container2.add(jButtonArray[i]);
         }
 
+
+//        resetInstructionText();
+
         panel.add(instr);
         panel.add(targetColor);
         panel.add(container2);
         add(panel);
         setVisible(true);
+
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+//                    jButtonArray[finalI].setBackground(Color.RED);
+
+            if (tempInt == colorIndex) {
+                instr.setText("You were right!");
+            } else {
+                try {
+                    changeInstructionText();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+
+                System.out.println("The label text is now " + instr.getText());
+
+                String labelText = instr.getText();
+                if(labelText.contains("Wrong"))
+                    instr = new JLabel("Click a button!");
+
+/*
+                        Timer timer = new Timer(0, this);
+                        timer.setInitialDelay(3000);
+*/
+//                        resetInstructionText();
+//                        instr.setText("Wrong one!!");
+/*                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }*/
+//                        instr.setText("Click a button!");
+                System.out.println("Now leaving actionPerformed() method." + " Current time is: " + System.currentTimeMillis());
+            }
+
+    }
+
+    private void changeInstructionText() throws InterruptedException {
+//        lock.lock();
+        System.out.println("Now inside changeInstructionText() method.");
+        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        secondsToWait = 4;
+        Runnable task = new Runnable() {
+            //            @Override
+            public void run() {
+                secondsToWait--;
+                if (secondsToWait == 3) {
+                    instr.setText("Wrong one!!"); //+ " Current time is: " + System.currentTimeMillis());
+                    System.out.println("The label is now: " + instr.getText());
+//                } else if (secondsToWait == 2) {
+//                    instr.setText("Seconds is 2");
+//                    System.out.println("The label is now: " + instr.getText());
+
+                } else if (secondsToWait == 1) {
+                    instr.setText("Wrong one!!"); /*+ " Current time is: " + System.currentTimeMillis());*/
+                    System.out.println("The label is now: " + instr.getText());                    // do nothing
+                } else if (secondsToWait == 0) {
+                    executor.shutdown();
+                }
+            }
+        };
+        executor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
+
+        /*try {110
+            textHasChanged.wait(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }*/
+//        resetInstructionText();
+        System.out.println("Now leaving changeInstructionText() method." + " Current time is: " + System.currentTimeMillis());
+    }
+
+    public static void resetInstructionText() {
+        System.out.println("Now inside resetInstructionText() method." + " Current time is: " + System.currentTimeMillis());
+
+        JPanel panel2 = new JPanel();
+/*        String currentStr = instr.getText();
+        if (currentStr == "Wrong one!!")
+            instr = new JLabel("Click a button!");*/
+/*
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+*/
+//        Timer timer = new Timer()
+
     }
 
     private void addToRandomIntList(JButton[] jButtonArray, ArrayList<Integer> randIntList) {
@@ -316,6 +459,8 @@ public class MainGameFrame extends JFrame {
     public static void main(String[] args) {
         MainGameFrame.setLookAndFeel();
         MainGameFrame frame = new MainGameFrame();
+        if (instr.getText() == "Wrong one!!")
+            resetInstructionText();
         //frame.show();
     }
 
