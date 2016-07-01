@@ -34,9 +34,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
+ * TODO - Replace target color label text with color graphic
  * TODO - Make incorrect confirmation message display quicker
  * TODO - Write a reset() method to reset colors and target color
  * TODO - Remove unused code
+ * DONE - Add incorrect selection to incorrect confirmation text
  * DONE - Modify colors to be more distinct (may require using custom in place of provided colors)
  * DONE - Move confirmation message from button to top JLabel
  * DONE - Set top label to reset after alerting the user of an incorrect choice
@@ -59,7 +61,12 @@ public class MainGameFrame extends JFrame implements ActionListener {
     final Lock lock = new ReentrantLock();
     final Condition textHasChanged = lock.newCondition();
     public static JLabel instr;
-    public static int colorIndex;
+    public static String targetColorStr;
+    public static String colorStr;
+    public static String[] colorStrings;
+    public static List<String> colors = new ArrayList<String>();
+    public static int targetColorIndex;
+    public static int targetColorInt;
     public static int colorInt;
     public static int tempInt;
     public static int secondsToWait;
@@ -155,15 +162,16 @@ public class MainGameFrame extends JFrame implements ActionListener {
             tempInt = i;
 //            MyListener listener = new MyListener(jButtonArray[i], instr, tempInt, colorIndex);
             final int finalI = i;
+            final int finalI1 = i;
             jButtonArray[i].addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 //                    jButtonArray[finalI].setBackground(Color.RED);
 
-                    if (finalI == colorIndex) {
+                    if (finalI == targetColorIndex) {
                         instr.setText("You were right!");
                     } else {
                         try {
-                            changeInstructionText();
+                            changeInstructionText(finalI1);
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
@@ -193,7 +201,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
             container2.add(jButtonArray[i]);
         }
 
-
+        getColorStrings(randomInts);
 //        resetInstructionText();
 
         panel.add(instr);
@@ -208,14 +216,14 @@ public class MainGameFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 //                    jButtonArray[finalI].setBackground(Color.RED);
 
-            if (tempInt == colorIndex) {
+            if (tempInt == targetColorIndex) {
                 instr.setText("You were right!");
             } else {
-                try {
-                    changeInstructionText();
+/*                try {
+//                    changeInstructionText(finalI1);
                 } catch (InterruptedException e1) {
                     e1.printStackTrace();
-                }
+                }*/
 
                 System.out.println("The label text is now " + instr.getText());
 
@@ -240,7 +248,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     }
 
-    private void changeInstructionText() throws InterruptedException {
+    private void changeInstructionText(final int index) throws InterruptedException {
 //        lock.lock();
         System.out.println("Now inside changeInstructionText() method.");
         final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -250,14 +258,14 @@ public class MainGameFrame extends JFrame implements ActionListener {
             public void run() {
                 secondsToWait--;
                 if (secondsToWait == 2) {
-                    instr.setText("Wrong one!!"); //+ " Current time is: " + System.currentTimeMillis());
+                    instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); //+ " Current time is: " + System.currentTimeMillis());
                     System.out.println("The label is now: " + instr.getText());
 //                } else if (secondsToWait == 2) {
 //                    instr.setText("Seconds is 2");
 //                    System.out.println("The label is now: " + instr.getText());
 
                 } else if (secondsToWait == 1) {
-                    instr.setText("Wrong one!!"); /*+ " Current time is: " + System.currentTimeMillis());*/
+                    instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); /*+ " Current time is: " + System.currentTimeMillis());*/
                     System.out.println("The label is now: " + instr.getText());                    // do nothing
                 } else if (secondsToWait == 0) {
                     executor.shutdown();
@@ -362,78 +370,159 @@ public class MainGameFrame extends JFrame implements ActionListener {
     }
 
     private String getTargetColor(int[] randomInts) {
-       colorIndex = ThreadLocalRandom.current().nextInt(0, 6);
-       colorInt = randomInts[colorIndex];
-        System.out.println("The target color index is: " + colorInt);
-       String colorStr = "";
-        switch(colorInt) {
+       targetColorIndex = ThreadLocalRandom.current().nextInt(0, 6);
+       targetColorInt = randomInts[targetColorIndex];
+        System.out.println("The target color index is: " + targetColorInt);
+        switch(targetColorInt) {
             case 0:
-                colorStr = "RED";
+                targetColorStr = "RED";
                 break;
             case 1:
-                colorStr = "GREEN";
+                targetColorStr = "GREEN";
                 break;
             case 2:
-                colorStr = "GRAY";
+                targetColorStr = "GRAY";
                 break;
             case 3:
-                colorStr = "ORANGE";
+                targetColorStr = "ORANGE";
                 break;
             case 4:
-                colorStr = "YELLOW";
+                targetColorStr = "YELLOW";
                 break;
             case 5:
-                colorStr = "PINK";
+                targetColorStr = "PINK";
                 break;
             case 6:
-                colorStr = "BLUE";
+                targetColorStr = "BLUE";
                 break;
             case 7:
-                colorStr = "BLACK";
+                targetColorStr = "BLACK";
                 break;
             case 8:
-                colorStr = "WHITE";
+                targetColorStr = "WHITE";
                 break;
             case 9:
-                colorStr = "LIGHT BLUE";
+                targetColorStr = "LIGHT BLUE";
                 break;
             case 10:
-                colorStr = "DARK GRAY";
+                targetColorStr = "DARK GRAY";
                 break;
             case 11:
-                colorStr = "ORANGE";
+                targetColorStr = "ORANGE";
                 break;
             case 12:
-                colorStr = "DARK ORANGE";
+                targetColorStr = "DARK ORANGE";
                 break;
             case 13:
-                colorStr = "LIGHT BROWN";
+                targetColorStr = "LIGHT BROWN";
                 break;
             case 14:
-                colorStr = "BROWN";
+                targetColorStr = "BROWN";
                 break;
             case 15:
-                colorStr = "DARK BROWN";
+                targetColorStr = "DARK BROWN";
                 break;
             case 16:
-                colorStr = "LIGHT GRAY";
+                targetColorStr = "LIGHT GRAY";
                 break;
             case 17:
-                colorStr = "LIGHT GREEN";
+                targetColorStr = "LIGHT GREEN";
                 break;
             case 18:
-                colorStr = "DARK BLUE";
+                targetColorStr = "DARK BLUE";
                 break;
             case 19:
-                colorStr = "DARK RED";
+                targetColorStr = "DARK RED";
                 break;
             case 20:
-                colorStr = "PURPLE";
+                targetColorStr = "PURPLE";
                 break;
             case 21:
-                colorStr = "DARK GREEN";
+                targetColorStr = "DARK GREEN";
                 break;
         }
+        return targetColorStr;
+    }
+
+    private void getButtonColorStrings(int[] randomInts) {
+
+    }
+
+    private String getColorStrings(int[] randomInts) {
+        for (int i : randomInts) {
+            switch(i) {
+                case 0:
+                    colorStr = "RED";
+                    break;
+                case 1:
+                    colorStr = "GREEN";
+                    break;
+                case 2:
+                    colorStr = "GRAY";
+                    break;
+                case 3:
+                    colorStr = "ORANGE";
+                    break;
+                case 4:
+                    colorStr = "YELLOW";
+                    break;
+                case 5:
+                    colorStr = "PINK";
+                    break;
+                case 6:
+                    colorStr = "BLUE";
+                    break;
+                case 7:
+                    colorStr = "BLACK";
+                    break;
+                case 8:
+                    colorStr = "WHITE";
+                    break;
+                case 9:
+                    colorStr = "LIGHT BLUE";
+                    break;
+                case 10:
+                    colorStr = "DARK GRAY";
+                    break;
+                case 11:
+                    colorStr = "ORANGE";
+                    break;
+                case 12:
+                    colorStr = "DARK ORANGE";
+                    break;
+                case 13:
+                    colorStr = "LIGHT BROWN";
+                    break;
+                case 14:
+                    colorStr = "BROWN";
+                    break;
+                case 15:
+                    colorStr = "DARK BROWN";
+                    break;
+                case 16:
+                    colorStr = "LIGHT GRAY";
+                    break;
+                case 17:
+                    colorStr = "LIGHT GREEN";
+                    break;
+                case 18:
+                    colorStr = "DARK BLUE";
+                    break;
+                case 19:
+                    colorStr = "DARK RED";
+                    break;
+                case 20:
+                    colorStr = "PURPLE";
+                    break;
+                case 21:
+                    colorStr = "DARK GREEN";
+                    break;
+            }
+            colors.add(colorStr);
+        }
+/*        for (String aStr : colorStrings) {
+            System.out.print(aStr + " ");
+        }*/
         return colorStr;
     }
 

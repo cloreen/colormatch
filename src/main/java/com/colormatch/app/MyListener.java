@@ -18,9 +18,9 @@ public class MyListener implements PropertyChangeListener {
 
     public void propertyChange(PropertyChangeEvent pce) {
 
-        if (label.getText() == "Wrong one!!") {
+        if (label.getText().contains("Wrong one!!")) {
             try {
-                TimeUnit.SECONDS.sleep(3);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

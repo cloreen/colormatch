@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66ab303c-91c2-416b-9eac-62304089818f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/CustomColor.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/CustomColor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame$1.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="colormatch.iws" />
@@ -42,17 +43,18 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46365914">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5614035">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4085#4094#0" expanded="true" />
-                <element signature="e#4486#4495#0" expanded="true" />
-                <element signature="e#6526#7994#0" expanded="true" />
-                <element signature="e#7993#7994#0" expanded="true" />
-                <element signature="e#9842#10776#0" expanded="true" />
-                <element signature="e#10775#10776#0" expanded="true" />
-                <element signature="e#13316#13325#0" expanded="true" />
+                <element signature="e#2859#2867#0" expanded="true" />
+                <element signature="e#4437#4446#0" expanded="true" />
+                <element signature="e#4838#4847#0" expanded="true" />
+                <element signature="e#6913#8394#0" expanded="true" />
+                <element signature="e#8393#8394#0" expanded="true" />
+                <element signature="e#10312#11330#0" expanded="true" />
+                <element signature="e#11329#11330#0" expanded="true" />
+                <element signature="e#13870#13879#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+              <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#335#336#0" expanded="true" />
@@ -179,8 +181,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColors.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       </list>
     </option>
@@ -567,7 +569,13 @@
       <option name="project" value="LOCAL" />
       <updated>1467325441222</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Modified and updated Custom Colors to display more distinct colors, updated TODOS">
+      <created>1467338241005</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1467338241005</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -619,7 +627,8 @@
     <MESSAGE value="Made each color in grid unique, updated TODOS" />
     <MESSAGE value="Ensured target color is always included in button grid and registers as correct when button is clicked, updated TODOS" />
     <MESSAGE value="Created new MyListener ActionListener class, added ChangePropertyListener to Instruction JLabel to allow for extra text change, updated TODOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created new MyListener ActionListener class, added ChangePropertyListener to Instruction JLabel to allow for extra text change, updated TODOS" />
+    <MESSAGE value="Modified and updated Custom Colors to display more distinct colors, updated TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified and updated Custom Colors to display more distinct colors, updated TODOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -654,14 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/concurrent/ThreadLocalRandom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="83" column="13" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/javax/swing/JLabel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -678,18 +679,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8493" column="16" selection-start-line="8493" selection-start-column="16" selection-end-line="8493" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,19 +701,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/concurrent/ThreadLocalRandom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46365914">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="83" column="13" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="51" selection-start-line="20" selection-start-column="51" selection-end-line="20" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4085#4094#0" expanded="true" />
-            <element signature="e#4486#4495#0" expanded="true" />
-            <element signature="e#6526#7994#0" expanded="true" />
-            <element signature="e#7993#7994#0" expanded="true" />
-            <element signature="e#9842#10776#0" expanded="true" />
-            <element signature="e#10775#10776#0" expanded="true" />
-            <element signature="e#13316#13325#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5614035">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2859#2867#0" expanded="true" />
+            <element signature="e#4437#4446#0" expanded="true" />
+            <element signature="e#4838#4847#0" expanded="true" />
+            <element signature="e#6913#8394#0" expanded="true" />
+            <element signature="e#8393#8394#0" expanded="true" />
+            <element signature="e#10312#11330#0" expanded="true" />
+            <element signature="e#11329#11330#0" expanded="true" />
+            <element signature="e#13870#13879#0" expanded="true" />
           </folding>
         </state>
       </provider>
