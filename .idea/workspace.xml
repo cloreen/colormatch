@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66ab303c-91c2-416b-9eac-62304089818f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java" />
-      <change type="DELETED" beforePath="C:\IntelliJ_Projects\colormatch\target\classes\com\colormatch\app\MainGameFrame$1.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame$1.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -42,17 +42,17 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4461153">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.46365914">
+              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3973#3982#0" expanded="true" />
-                <element signature="e#4374#4383#0" expanded="true" />
-                <element signature="e#6414#7882#0" expanded="true" />
-                <element signature="e#7881#7882#0" expanded="true" />
-                <element signature="e#9730#10664#0" expanded="true" />
-                <element signature="e#10663#10664#0" expanded="true" />
-                <element signature="e#13204#13213#0" expanded="true" />
+                <element signature="e#4085#4094#0" expanded="true" />
+                <element signature="e#4486#4495#0" expanded="true" />
+                <element signature="e#6526#7994#0" expanded="true" />
+                <element signature="e#7993#7994#0" expanded="true" />
+                <element signature="e#9842#10776#0" expanded="true" />
+                <element signature="e#10775#10776#0" expanded="true" />
+                <element signature="e#13316#13325#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#335#336#0" expanded="true" />
@@ -106,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+              <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
               <folding>
                 <element signature="e#183#184#0" expanded="true" />
                 <element signature="e#216#217#0" expanded="true" />
@@ -179,8 +179,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColors.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       </list>
     </option>
@@ -561,7 +561,13 @@
       <option name="project" value="LOCAL" />
       <updated>1466905454331</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created new MyListener ActionListener class, added ChangePropertyListener to Instruction JLabel to allow for extra text change, updated TODOS">
+      <created>1467325441222</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1467325441222</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -612,7 +618,8 @@
     <MESSAGE value="Updated possible target colors, TODOS" />
     <MESSAGE value="Made each color in grid unique, updated TODOS" />
     <MESSAGE value="Ensured target color is always included in button grid and registers as correct when button is clicked, updated TODOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ensured target color is always included in button grid and registers as correct when button is clicked, updated TODOS" />
+    <MESSAGE value="Created new MyListener ActionListener class, added ChangePropertyListener to Instruction JLabel to allow for extra text change, updated TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created new MyListener ActionListener class, added ChangePropertyListener to Instruction JLabel to allow for extra text change, updated TODOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -647,30 +654,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/awt/Color.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/concurrent/ThreadLocalRandom.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="83" column="13" selection-start-line="83" selection-start-column="13" selection-end-line="83" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-          <folding>
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#216#217#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -696,7 +684,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MyListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#335#336#0" expanded="true" />
@@ -705,19 +693,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/awt/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/CustomColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="61" selection-start-line="56" selection-start-column="61" selection-end-line="56" selection-end-column="61" />
+          <folding>
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4461153">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.46365914">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3973#3982#0" expanded="true" />
-            <element signature="e#4374#4383#0" expanded="true" />
-            <element signature="e#6414#7882#0" expanded="true" />
-            <element signature="e#7881#7882#0" expanded="true" />
-            <element signature="e#9730#10664#0" expanded="true" />
-            <element signature="e#10663#10664#0" expanded="true" />
-            <element signature="e#13204#13213#0" expanded="true" />
+            <element signature="e#4085#4094#0" expanded="true" />
+            <element signature="e#4486#4495#0" expanded="true" />
+            <element signature="e#6526#7994#0" expanded="true" />
+            <element signature="e#7993#7994#0" expanded="true" />
+            <element signature="e#9842#10776#0" expanded="true" />
+            <element signature="e#10775#10776#0" expanded="true" />
+            <element signature="e#13316#13325#0" expanded="true" />
           </folding>
         </state>
       </provider>

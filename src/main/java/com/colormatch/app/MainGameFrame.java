@@ -34,8 +34,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
- * TODO - Move confirmation message from button to top JLabel
+ * TODO - Make incorrect confirmation message display quicker
  * TODO - Write a reset() method to reset colors and target color
+ * TODO - Remove unused code
+ * DONE - Modify colors to be more distinct (may require using custom in place of provided colors)
+ * DONE - Move confirmation message from button to top JLabel
  * DONE - Set top label to reset after alerting the user of an incorrect choice
  * DONE - Assure target color is always among displayed colors
  * DONE - Ensure each button's color is unique in the grid
@@ -65,11 +68,10 @@ public class MainGameFrame extends JFrame implements ActionListener {
     public static CustomColor customColor;
 
     public static Color buttonColors[] = { Color.RED, Color.GREEN, Color.GRAY, Color.ORANGE, Color.YELLOW,
-            Color.PINK, Color.MAGENTA, Color.BLUE, Color.BLACK, Color.WHITE, CustomColor.LIGHT_BLUE,
-            CustomColor.BEIGE, CustomColor.DARK_ORANGE, CustomColor.LIGHT_BROWN, CustomColor.GOLD,
-            CustomColor.LIME, CustomColor.LIGHT_GRAY, CustomColor.LIGHT_GREEN, CustomColor.PEACH,
-            CustomColor.ORCHID, CustomColor.PURPLE, CustomColor.RUST, CustomColor.TEAL , CustomColor.SALMON,
-            CustomColor.STEEL_BLUE, CustomColor.VIOLET};
+            Color.PINK, Color.BLUE, Color.BLACK, Color.WHITE, CustomColor.LIGHT_BLUE, Color.DARK_GRAY,
+            CustomColor.ORANGE, CustomColor.DARK_ORANGE, CustomColor.LIGHT_BROWN, CustomColor.BROWN,
+            CustomColor.DARK_BROWN, Color.LIGHT_GRAY, CustomColor.LIGHT_GREEN, CustomColor.DARK_BLUE,
+            CustomColor.DARK_RED, CustomColor.PURPLE, CustomColor.DARK_GREEN };
 
 
     public MainGameFrame() {
@@ -109,7 +111,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         jButtonArray = new JButton[]{button1, button2, button3, button4, button5, button6};
         List<Integer> randIntList = new ArrayList<Integer>();
 //        addToRandomIntList(jButtonArray, (ArrayList<Integer>) randIntList);
-        int[] randomInts = new Random().ints(0, 26).distinct().limit(6).toArray();
+        int[] randomInts = new Random().ints(0, 22).distinct().limit(6).toArray();
         System.out.print("The numbers randomly generated are: ");
         for (int i = 0; i < randomInts.length; i++) {
             System.out.print(" " + randomInts[i] + " ");
@@ -242,12 +244,12 @@ public class MainGameFrame extends JFrame implements ActionListener {
 //        lock.lock();
         System.out.println("Now inside changeInstructionText() method.");
         final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        secondsToWait = 4;
+        secondsToWait = 3;
         Runnable task = new Runnable() {
             //            @Override
             public void run() {
                 secondsToWait--;
-                if (secondsToWait == 3) {
+                if (secondsToWait == 2) {
                     instr.setText("Wrong one!!"); //+ " Current time is: " + System.currentTimeMillis());
                     System.out.println("The label is now: " + instr.getText());
 //                } else if (secondsToWait == 2) {
@@ -384,22 +386,22 @@ public class MainGameFrame extends JFrame implements ActionListener {
                 colorStr = "PINK";
                 break;
             case 6:
-                colorStr = "MAGENTA";
-                break;
-            case 7:
                 colorStr = "BLUE";
                 break;
-            case 8:
+            case 7:
                 colorStr = "BLACK";
                 break;
-            case 9:
+            case 8:
                 colorStr = "WHITE";
                 break;
-            case 10:
+            case 9:
                 colorStr = "LIGHT BLUE";
                 break;
+            case 10:
+                colorStr = "DARK GRAY";
+                break;
             case 11:
-                colorStr = "BEIGE";
+                colorStr = "ORANGE";
                 break;
             case 12:
                 colorStr = "DARK ORANGE";
@@ -408,10 +410,10 @@ public class MainGameFrame extends JFrame implements ActionListener {
                 colorStr = "LIGHT BROWN";
                 break;
             case 14:
-                colorStr = "GOLD";
+                colorStr = "BROWN";
                 break;
             case 15:
-                colorStr = "LIME";
+                colorStr = "DARK BROWN";
                 break;
             case 16:
                 colorStr = "LIGHT GRAY";
@@ -420,28 +422,16 @@ public class MainGameFrame extends JFrame implements ActionListener {
                 colorStr = "LIGHT GREEN";
                 break;
             case 18:
-                colorStr = "PEACH";
+                colorStr = "DARK BLUE";
                 break;
             case 19:
-                colorStr = "ORCHID";
+                colorStr = "DARK RED";
                 break;
             case 20:
                 colorStr = "PURPLE";
                 break;
             case 21:
-                colorStr = "RUST";
-                break;
-            case 22:
-                colorStr = "TEAL";
-                break;
-            case 23:
-                colorStr = "SALMON";
-                break;
-            case 24:
-                colorStr = "STEEL BLUE";
-                break;
-            case 25:
-                colorStr = "VIOLET";
+                colorStr = "DARK GREEN";
                 break;
         }
         return colorStr;
