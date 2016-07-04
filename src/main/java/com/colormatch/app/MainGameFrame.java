@@ -34,10 +34,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
+ * TODO - Add a timer
  * TODO - Replace target color label text with color graphic
  * TODO - Make incorrect confirmation message display quicker
- * TODO - Write a reset() method to reset colors and target color
  * TODO - Remove unused code
+ * DONE - Write a reset() method to reset colors and target color // Put main JPanel w/ functinality in separate class
  * DONE - Add incorrect selection to incorrect confirmation text
  * DONE - Modify colors to be more distinct (may require using custom in place of provided colors)
  * DONE - Move confirmation message from button to top JLabel
@@ -86,7 +87,12 @@ public class MainGameFrame extends JFrame implements ActionListener {
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
+        GamePanel();
+
+    }
+
+    private void GamePanel() {
+        final JPanel panel = new JPanel();
         GridLayout panelGrid = new GridLayout(3, 1);
         panel.setLayout(panelGrid);
 
@@ -168,7 +174,30 @@ public class MainGameFrame extends JFrame implements ActionListener {
 //                    jButtonArray[finalI].setBackground(Color.RED);
 
                     if (finalI == targetColorIndex) {
-                        instr.setText("You were right!");
+
+                        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+                        secondsToWait = 4;
+                        Runnable task = new Runnable() {
+                            //            @Override
+                            public void run() {
+                                secondsToWait--;
+                                if (secondsToWait == 3) {
+                                    instr.setText("Click a button!"); //+ " Current time is: " + System.currentTimeMillis());
+//                } else if (secondsToWait == 2) {
+//                    instr.setText("Seconds is 2");
+//                    System.out.println("The label is now: " + instr.getText());
+
+                                } else if (secondsToWait == 2) {
+                                    instr.setText("You were right!");
+                                } else if (secondsToWait == 1) {
+                                    container2.removeAll();
+                                    GamePanel();
+                                } else if (secondsToWait == 0) {
+                                    executor.shutdown();
+                                }
+                            }
+                        };
+                        executor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
                     } else {
                         try {
                             changeInstructionText(finalI1);
@@ -209,8 +238,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         panel.add(container2);
         add(panel);
         setVisible(true);
-
-
     }
 
     public void actionPerformed(ActionEvent e) {
