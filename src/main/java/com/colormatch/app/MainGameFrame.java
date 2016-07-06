@@ -34,10 +34,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
- * TODO - Add a timer
  * TODO - Replace target color label text with color graphic
  * TODO - Make incorrect confirmation message display quicker
  * TODO - Remove unused code
+ * DONE - Add a timer
  * DONE - Write a reset() method to reset colors and target color // Put main JPanel w/ functinality in separate class
  * DONE - Add incorrect selection to incorrect confirmation text
  * DONE - Modify colors to be more distinct (may require using custom in place of provided colors)
@@ -93,8 +93,16 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     private void GamePanel() {
         final JPanel panel = new JPanel();
-        GridLayout panelGrid = new GridLayout(3, 1);
+        Dimension container2Dim = new Dimension(150, 100);
+        container2.setPreferredSize(container2Dim);
+/*
+        GridLayout panelGrid = new GridLayout(5, 1);
         panel.setLayout(panelGrid);
+*/
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+
+
 
         String colorStr = "";
         instr = new JLabel("Click a button!", JLabel.CENTER);
@@ -103,6 +111,40 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
 
 
+        final JLabel timerLabel = new JLabel("", JLabel.CENTER);
+        final JButton restartButton = new JButton("Play Again");
+        restartButton.setVisible(false);
+        restartButton.setEnabled(false);
+        restartButton.setRolloverEnabled(false);
+        restartButton.setFocusable(false);
+        final ScheduledExecutorService timerExecutor = Executors.newScheduledThreadPool(1);
+        secondsToWait = 4;
+        Runnable task = new Runnable() {
+            //            @Override
+            public void run() {
+                secondsToWait--;
+                if (secondsToWait != 0) {
+                    timerLabel.setText("Time remaining: " + secondsToWait + " seconds."); //+ " Current time is: " + System.currentTimeMillis());
+                } else {
+                    instr.setText("Too late! You ran out of time!");
+                    timerLabel.setText("Time remaining: " + secondsToWait + " seconds.");
+//                    panel.remove(timerLabel);
+                    restartButton.setVisible(true);
+                    restartButton.setEnabled(true);
+                    restartButton.setRolloverEnabled(true);
+                    restartButton.setFocusable(true);
+                    restartButton.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            container2.removeAll();
+                            panel.removeAll();
+                            GamePanel();
+                        }
+                    });
+                    timerExecutor.shutdown();
+                }
+            }
+        };
+        timerExecutor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
 
 /*
         instr.setSize(100, 50);
@@ -112,7 +154,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         GridLayout grid = new GridLayout(3, 2);
         container2.setLayout(grid);
 
-        Dimension bDimension = new Dimension(50, 50);
+        Dimension bDimension = new Dimension(100, 50);
         List<JButton> jButtonList = new ArrayList<JButton>();
         JButton button1 = new JButton();
         JButton button2 = new JButton();
@@ -186,7 +228,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
 //                } else if (secondsToWait == 2) {
 //                    instr.setText("Seconds is 2");
 //                    System.out.println("The label is now: " + instr.getText());
-
                                 } else if (secondsToWait == 2) {
                                     instr.setText("You were right!");
                                 } else if (secondsToWait == 1) {
@@ -227,17 +268,55 @@ public class MainGameFrame extends JFrame implements ActionListener {
                     }
                 }
             });
+
             container2.add(jButtonArray[i]);
         }
 
         getColorStrings(randomInts);
 //        resetInstructionText();
 
-        panel.add(instr);
-        panel.add(targetColor);
-        panel.add(container2);
+        // Place instruction JLabel
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.ipady = 1;
+        panel.add(instr, constraints);
+
+        // Place timer JLabel
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.ipady = 5;
+        panel.add(timerLabel, constraints);
+
+        // Place restart JButton
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+//        constraints.ipady = 1;
+        constraints.insets = new Insets(5, 5, 5, 5);
+        panel.add(restartButton, constraints);
+
+        // Place target color instruction JLabel
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.ipady = 1;
+        panel.add(targetColor, constraints);
+
+        // Place color buttons
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 0;
+        constraints.gridy = 4;
+        constraints.ipady = 1;
+        constraints.anchor = GridBagConstraints.PAGE_END;
+        constraints.insets = new Insets(10, 0, 0, 0);
+        constraints.gridwidth = 2;
+        panel.add(container2, constraints);
+
         add(panel);
         setVisible(true);
+
     }
 
     public void actionPerformed(ActionEvent e) {
