@@ -34,6 +34,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
+ * TODO - Make color button size independent of instruction text
+ * TODO - Set timer to stop on color button click
+ * TODO - Remove color button clickability upon time exhaustion
+ * TODO - Add scoring
+ * TODO - Lengthen timer duration
  * TODO - Replace target color label text with color graphic
  * TODO - Make incorrect confirmation message display quicker
  * TODO - Remove unused code
@@ -93,12 +98,10 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     private void GamePanel() {
         final JPanel panel = new JPanel();
+
         Dimension container2Dim = new Dimension(150, 100);
         container2.setPreferredSize(container2Dim);
-/*
-        GridLayout panelGrid = new GridLayout(5, 1);
-        panel.setLayout(panelGrid);
-*/
+
         panel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
 
@@ -108,8 +111,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         instr = new JLabel("Click a button!", JLabel.CENTER);
         MyListener labelListener = new MyListener(instr);
         instr.addPropertyChangeListener(labelListener);
-
-
 
         final JLabel timerLabel = new JLabel("", JLabel.CENTER);
         final JButton restartButton = new JButton("Play Again");
@@ -146,11 +147,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         };
         timerExecutor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
 
-/*
-        instr.setSize(100, 50);
-        container1.add(instr);
-*/
-
         GridLayout grid = new GridLayout(3, 2);
         container2.setLayout(grid);
 
@@ -164,8 +160,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         JButton button6 = new JButton();
 
         jButtonArray = new JButton[]{button1, button2, button3, button4, button5, button6};
-        List<Integer> randIntList = new ArrayList<Integer>();
-//        addToRandomIntList(jButtonArray, (ArrayList<Integer>) randIntList);
         int[] randomInts = new Random().ints(0, 22).distinct().limit(6).toArray();
         System.out.print("The numbers randomly generated are: ");
         for (int i = 0; i < randomInts.length; i++) {
@@ -173,33 +167,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         }
 
         JLabel targetColor = new JLabel("Click the " + getTargetColor(randomInts) + " button!", JLabel.CENTER);
-/*
-        for (int i = 0; i < jButtonArray.length; i++) {
-            int randInt = ThreadLocalRandom.current().nextInt(0, 25 + 1);
-            if (randIntList.size() < 1) {
-                randIntList.add(randInt);
-            } else {
-                List<Integer> tempList = new ArrayList<Integer>();
-                tempList.addAll(randIntList);
-                for (int item : tempList) {
-                    if (item != randInt) {
-                        if (tempList.indexOf(item) == tempList.size()) {
-                            randIntList.add(randInt);
-                        } else {
-                            // next item in tempList
-                        }
-                    } else {
-                        int newInt = checkForDuplicate(item);
-                        if (tempList.indexOf(item) == tempList.size()) {
-                            randIntList.add(newInt);
-                        } else {
-                            // next item in tempList
-                        }
-                    }
-                }
-            }
-        }
-*/
 
 
         for (int i = 0; i < jButtonArray.length; i++) {
@@ -225,9 +192,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
                                 secondsToWait--;
                                 if (secondsToWait == 3) {
                                     instr.setText("Click a button!"); //+ " Current time is: " + System.currentTimeMillis());
-//                } else if (secondsToWait == 2) {
-//                    instr.setText("Seconds is 2");
-//                    System.out.println("The label is now: " + instr.getText());
                                 } else if (secondsToWait == 2) {
                                     instr.setText("You were right!");
                                 } else if (secondsToWait == 1) {
@@ -247,23 +211,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
                         }
 
                         System.out.println("The label text is now " + instr.getText());
-
-/*                        String labelText = instr.getText();
-                        if(labelText.contains("Wrong"))
-                            instr = new JLabel("Click a button!");
-
-
-                        Timer timer = new Timer(0, this);
-                        timer.setInitialDelay(3000);
-
-//                        resetInstructionText();
-//                        instr.setText("Wrong one!!");
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }*/
-//                        instr.setText("Click a button!");
                         System.out.println("Now leaving actionPerformed() method." + " Current time is: " + System.currentTimeMillis());
                     }
                 }
@@ -273,7 +220,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         }
 
         getColorStrings(randomInts);
-//        resetInstructionText();
+
 
         // Place instruction JLabel
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -320,56 +267,31 @@ public class MainGameFrame extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-//                    jButtonArray[finalI].setBackground(Color.RED);
 
             if (tempInt == targetColorIndex) {
                 instr.setText("You were right!");
             } else {
-/*                try {
-//                    changeInstructionText(finalI1);
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }*/
-
                 System.out.println("The label text is now " + instr.getText());
 
                 String labelText = instr.getText();
                 if(labelText.contains("Wrong"))
                     instr = new JLabel("Click a button!");
 
-/*
-                        Timer timer = new Timer(0, this);
-                        timer.setInitialDelay(3000);
-*/
-//                        resetInstructionText();
-//                        instr.setText("Wrong one!!");
-/*                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }*/
-//                        instr.setText("Click a button!");
                 System.out.println("Now leaving actionPerformed() method." + " Current time is: " + System.currentTimeMillis());
             }
-
     }
 
     private void changeInstructionText(final int index) throws InterruptedException {
-//        lock.lock();
         System.out.println("Now inside changeInstructionText() method.");
         final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
         secondsToWait = 3;
         Runnable task = new Runnable() {
-            //            @Override
+
             public void run() {
                 secondsToWait--;
                 if (secondsToWait == 2) {
                     instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); //+ " Current time is: " + System.currentTimeMillis());
                     System.out.println("The label is now: " + instr.getText());
-//                } else if (secondsToWait == 2) {
-//                    instr.setText("Seconds is 2");
-//                    System.out.println("The label is now: " + instr.getText());
-
                 } else if (secondsToWait == 1) {
                     instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); /*+ " Current time is: " + System.currentTimeMillis());*/
                     System.out.println("The label is now: " + instr.getText());                    // do nothing
@@ -380,35 +302,14 @@ public class MainGameFrame extends JFrame implements ActionListener {
         };
         executor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
 
-        /*try {110
-            textHasChanged.wait(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            lock.unlock();
-        }*/
-//        resetInstructionText();
         System.out.println("Now leaving changeInstructionText() method." + " Current time is: " + System.currentTimeMillis());
     }
 
     public static void resetInstructionText() {
         System.out.println("Now inside resetInstructionText() method." + " Current time is: " + System.currentTimeMillis());
-
-        JPanel panel2 = new JPanel();
-/*        String currentStr = instr.getText();
-        if (currentStr == "Wrong one!!")
-            instr = new JLabel("Click a button!");*/
-/*
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-*/
-//        Timer timer = new Timer()
-
     }
 
+/*
     private void addToRandomIntList(JButton[] jButtonArray, ArrayList<Integer> randIntList) {
         for (int i = 0; i < jButtonArray.length; i++) {
             int randInt = ThreadLocalRandom.current().nextInt(0, 25 + 1);
@@ -426,7 +327,9 @@ public class MainGameFrame extends JFrame implements ActionListener {
                 }
             }
         }
+*/
 
+/*
     private int checkForDuplicate(int item) {
 //        Boolean isUnique = false;
         int randInt = ThreadLocalRandom.current().nextInt(0, 25 + 1);
@@ -437,8 +340,10 @@ public class MainGameFrame extends JFrame implements ActionListener {
         }
         return randInt;
     }
+*/
 
 
+/*
     private void addRandomInt(List<Integer> randIntList, JButton[] jButtonArray) {
         int newInt = ThreadLocalRandom.current().nextInt(0, jButtonArray.length + 1);
         if (randIntList.size() < 1) {
@@ -447,13 +352,17 @@ public class MainGameFrame extends JFrame implements ActionListener {
 //            checkForDuplicateRandomInt(newInt, (ArrayList<Integer>) randIntList, jButtonArray);
         }
     }
+*/
 
+/*
     private void checkForDuplicateRandomInt(int newInt, ArrayList<Integer> randIntList, JButton[] jButtonArray) {
         List<Integer> duplicateList = new ArrayList<Integer>();
-        /*for (int index : randIntList) {
+        */
+/*for (int index : randIntList) {
             duplicateList.add(randIntList.get(index));
             System.out.println("Index " + index + " in duplicateList is: " + duplicateList.get(index));
-        }*/
+        }*//*
+
         for (int item : randIntList) {
             if (item != newInt) {
                 duplicateList.add(newInt);
@@ -463,7 +372,9 @@ public class MainGameFrame extends JFrame implements ActionListener {
             }
         }
     }
+*/
 
+/*
     public void initGrid() {
         GridLayout grid = new GridLayout(3, 2);
         add(new Button("1"));
@@ -474,6 +385,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         add(new Button("6"));
         container2.setLayout(grid);
     }
+*/
 
     private String getTargetColor(int[] randomInts) {
        targetColorIndex = ThreadLocalRandom.current().nextInt(0, 6);
@@ -550,9 +462,10 @@ public class MainGameFrame extends JFrame implements ActionListener {
         return targetColorStr;
     }
 
+/*
     private void getButtonColorStrings(int[] randomInts) {
-
     }
+*/
 
     private String getColorStrings(int[] randomInts) {
         for (int i : randomInts) {
@@ -626,9 +539,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
             }
             colors.add(colorStr);
         }
-/*        for (String aStr : colorStrings) {
-            System.out.print(aStr + " ");
-        }*/
         return colorStr;
     }
 
@@ -646,7 +556,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         MainGameFrame frame = new MainGameFrame();
         if (instr.getText() == "Wrong one!!")
             resetInstructionText();
-        //frame.show();
     }
 
 }

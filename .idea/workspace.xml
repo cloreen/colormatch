@@ -31,24 +31,22 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44360903">
-              <caret line="36" column="60" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.2706767">
+              <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2934#2942#0" expanded="true" />
-                <element signature="e#4998#6175#0" expanded="true" />
-                <element signature="e#5806#6085#0" expanded="true" />
-                <element signature="e#6084#6085#0" expanded="true" />
-                <element signature="e#6174#6175#0" expanded="true" />
-                <element signature="e#6510#6519#0" expanded="true" />
-                <element signature="e#6911#6920#0" expanded="true" />
-                <element signature="e#8986#11738#0" expanded="true" />
-                <element signature="e#9381#10437#0" expanded="true" />
-                <element signature="e#10436#10437#0" expanded="true" />
-                <element signature="e#11737#11738#0" expanded="true" />
-                <element signature="e#14927#15945#0" expanded="true" />
-                <element signature="e#15944#15945#0" expanded="true" />
-                <element signature="e#18485#18494#0" expanded="true" />
+                <element signature="e#3169#3177#0" expanded="true" />
+                <element signature="e#5138#6315#0" expanded="true" />
+                <element signature="e#5946#6225#0" expanded="true" />
+                <element signature="e#6224#6225#0" expanded="true" />
+                <element signature="e#6314#6315#0" expanded="true" />
+                <element signature="e#6580#6589#0" expanded="true" />
+                <element signature="e#7843#9728#0" expanded="true" />
+                <element signature="e#8238#9108#0" expanded="true" />
+                <element signature="e#9107#9108#0" expanded="true" />
+                <element signature="e#9727#9728#0" expanded="true" />
+                <element signature="e#12098#12894#0" expanded="true" />
+                <element signature="e#12893#12894#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -156,8 +154,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="cloreen &lt;cloreen@hotmail.com&gt;A" />
         <option value="cloreen &lt;cloreen@hotmail.com&gt;" />
+        <option value="cloreen &lt;cloreen@hotmail.com&gt;A" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -584,7 +582,13 @@
       <option name="project" value="LOCAL" />
       <updated>1467662780671</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Modified Restart Button to display only when time runs out and disappear after click, Changed main layout to GridBagLayout to streamline sizing of components, updated TODOS.">
+      <created>1467822875559</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1467822875559</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -639,7 +643,8 @@
     <MESSAGE value="Modified and updated Custom Colors to display more distinct colors, updated TODOS" />
     <MESSAGE value="Added selected color to confirmation text, updated TODOS" />
     <MESSAGE value="Moved JPanel w/ functionality to local class to allow game reset upon correct guess, updated TODOS." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved JPanel w/ functionality to local class to allow game reset upon correct guess, updated TODOS." />
+    <MESSAGE value="Modified Restart Button to display only when time runs out and disappear after click, Changed main layout to GridBagLayout to streamline sizing of components, updated TODOS." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified Restart Button to display only when time runs out and disappear after click, Changed main layout to GridBagLayout to streamline sizing of components, updated TODOS." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -736,24 +741,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44360903">
-          <caret line="36" column="60" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.2706767">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2934#2942#0" expanded="true" />
-            <element signature="e#4998#6175#0" expanded="true" />
-            <element signature="e#5806#6085#0" expanded="true" />
-            <element signature="e#6084#6085#0" expanded="true" />
-            <element signature="e#6174#6175#0" expanded="true" />
-            <element signature="e#6510#6519#0" expanded="true" />
-            <element signature="e#6911#6920#0" expanded="true" />
-            <element signature="e#8986#11738#0" expanded="true" />
-            <element signature="e#9381#10437#0" expanded="true" />
-            <element signature="e#10436#10437#0" expanded="true" />
-            <element signature="e#11737#11738#0" expanded="true" />
-            <element signature="e#14927#15945#0" expanded="true" />
-            <element signature="e#15944#15945#0" expanded="true" />
-            <element signature="e#18485#18494#0" expanded="true" />
+            <element signature="e#3169#3177#0" expanded="true" />
+            <element signature="e#5138#6315#0" expanded="true" />
+            <element signature="e#5946#6225#0" expanded="true" />
+            <element signature="e#6224#6225#0" expanded="true" />
+            <element signature="e#6314#6315#0" expanded="true" />
+            <element signature="e#6580#6589#0" expanded="true" />
+            <element signature="e#7843#9728#0" expanded="true" />
+            <element signature="e#8238#9108#0" expanded="true" />
+            <element signature="e#9107#9108#0" expanded="true" />
+            <element signature="e#9727#9728#0" expanded="true" />
+            <element signature="e#12098#12894#0" expanded="true" />
+            <element signature="e#12893#12894#0" expanded="true" />
           </folding>
         </state>
       </provider>
