@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66ab303c-91c2-416b-9eac-62304089818f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame$1.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" afterPath="$PROJECT_DIR$/target/classes/com/colormatch/app/MainGameFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" afterPath="$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,22 +31,22 @@
       <file leaf-file-name="MainGameFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41102758">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state vertical-scroll-proportion="12.568922">
+              <caret line="295" column="8" selection-start-line="295" selection-start-column="8" selection-end-line="295" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3177#3185#0" expanded="true" />
-                <element signature="e#6103#7557#0" expanded="true" />
-                <element signature="e#7182#7466#0" expanded="true" />
-                <element signature="e#7465#7466#0" expanded="true" />
-                <element signature="e#7556#7557#0" expanded="true" />
-                <element signature="e#9543#11678#0" expanded="true" />
-                <element signature="e#9937#11058#0" expanded="true" />
-                <element signature="e#11057#11058#0" expanded="true" />
-                <element signature="e#11677#11678#0" expanded="true" />
-                <element signature="e#16586#17420#0" expanded="true" />
-                <element signature="e#17419#17420#0" expanded="true" />
-                <marker date="1468298734893" expanded="true" signature="8987:12151" placeholder="{...}" />
+                <element signature="e#3246#3254#0" expanded="true" />
+                <element signature="e#6343#7928#0" expanded="true" />
+                <element signature="e#7458#7838#0" expanded="true" />
+                <element signature="e#7837#7838#0" expanded="true" />
+                <element signature="e#7927#7928#0" expanded="true" />
+                <element signature="e#9459#11672#0" expanded="true" />
+                <element signature="e#9921#11052#0" expanded="true" />
+                <element signature="e#11051#11052#0" expanded="true" />
+                <element signature="e#11671#11672#0" expanded="true" />
+                <element signature="e#13470#13982#0" expanded="true" />
+                <element signature="e#13981#13982#0" expanded="true" />
+                <marker date="1468302951446" expanded="true" signature="9048:11729" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -599,7 +601,13 @@
       <option name="project" value="LOCAL" />
       <updated>1468298005519</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Removed color button clickability when time expires, updated TODOS">
+      <created>1468298774260</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1468298774260</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -657,7 +665,8 @@
     <MESSAGE value="Modified Restart Button to display only when time runs out and disappear after click, Changed main layout to GridBagLayout to streamline sizing of components, updated TODOS." />
     <MESSAGE value="Removed most unused code, updated TODOS." />
     <MESSAGE value="Made several changes:&#10;- Made button click messages display faster&#10;- Lengthened timer duration&#10;- Set timer to stop when correct button is clicked&#10;- Made color button container size independent of JLabels&#10;- Updated TODOS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made several changes:&#10;- Made button click messages display faster&#10;- Lengthened timer duration&#10;- Set timer to stop when correct button is clicked&#10;- Made color button container size independent of JLabels&#10;- Updated TODOS" />
+    <MESSAGE value="Removed color button clickability when time expires, updated TODOS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed color button clickability when time expires, updated TODOS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -765,22 +774,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/colormatch/app/MainGameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41102758">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state vertical-scroll-proportion="12.568922">
+          <caret line="295" column="8" selection-start-line="295" selection-start-column="8" selection-end-line="295" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3177#3185#0" expanded="true" />
-            <element signature="e#6103#7557#0" expanded="true" />
-            <element signature="e#7182#7466#0" expanded="true" />
-            <element signature="e#7465#7466#0" expanded="true" />
-            <element signature="e#7556#7557#0" expanded="true" />
-            <element signature="e#9543#11678#0" expanded="true" />
-            <element signature="e#9937#11058#0" expanded="true" />
-            <element signature="e#11057#11058#0" expanded="true" />
-            <element signature="e#11677#11678#0" expanded="true" />
-            <element signature="e#16586#17420#0" expanded="true" />
-            <element signature="e#17419#17420#0" expanded="true" />
-            <marker date="1468298734893" expanded="true" signature="8987:12151" placeholder="{...}" />
+            <element signature="e#3246#3254#0" expanded="true" />
+            <element signature="e#6343#7928#0" expanded="true" />
+            <element signature="e#7458#7838#0" expanded="true" />
+            <element signature="e#7837#7838#0" expanded="true" />
+            <element signature="e#7927#7928#0" expanded="true" />
+            <element signature="e#9459#11672#0" expanded="true" />
+            <element signature="e#9921#11052#0" expanded="true" />
+            <element signature="e#11051#11052#0" expanded="true" />
+            <element signature="e#11671#11672#0" expanded="true" />
+            <element signature="e#13470#13982#0" expanded="true" />
+            <element signature="e#13981#13982#0" expanded="true" />
+            <marker date="1468302951446" expanded="true" signature="9048:11729" placeholder="{...}" />
           </folding>
         </state>
       </provider>
