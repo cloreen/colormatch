@@ -34,14 +34,14 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
- * TODO - Make color button size independent of instruction text
- * TODO - Set timer to stop on color button click
  * TODO - Remove color button clickability upon time exhaustion
  * TODO - Add scoring
- * TODO - Lengthen timer duration
  * TODO - Replace target color label text with color graphic
- * TODO - Make incorrect confirmation message display quicker
  * TODO - Remove unused code
+ * DONE - Make incorrect confirmation message display quicker
+ * DONE - Lengthen timer duration
+ * DONE - Set timer to stop on correct color button click
+ * DONE - Make color button size independent of instruction text
  * DONE - Add a timer
  * DONE - Write a reset() method to reset colors and target color // Put main JPanel w/ functinality in separate class
  * DONE - Add incorrect selection to incorrect confirmation text
@@ -76,9 +76,14 @@ public class MainGameFrame extends JFrame implements ActionListener {
     public static int colorInt;
     public static int tempInt;
     public static int secondsToWait;
+    public static int buttonWait;
+    public static int instrButtonWait;
     public static JButton[] jButtonArray = {};
 //    public static CustomColor customColor = new CustomColor();
+    private static final float BTN_SIZE = 24f;
+    private static final String BTN_TEXT = " ";
     public static CustomColor customColor;
+
 
     public static Color buttonColors[] = { Color.RED, Color.GREEN, Color.GRAY, Color.ORANGE, Color.YELLOW,
             Color.PINK, Color.BLUE, Color.BLACK, Color.WHITE, CustomColor.LIGHT_BLUE, Color.DARK_GRAY,
@@ -89,7 +94,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     public MainGameFrame() {
         super("Game Frame");
-        setSize(500, 500);
+        setSize(312, 388);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         GamePanel();
@@ -98,19 +103,39 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     private void GamePanel() {
         final JPanel panel = new JPanel();
+        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        final ScheduledExecutorService timerExecutor = Executors.newScheduledThreadPool(1);
 
-        Dimension container2Dim = new Dimension(150, 100);
-        container2.setPreferredSize(container2Dim);
 
-        panel.setLayout(new GridBagLayout());
+        Dimension container2Dim = new Dimension();
+//        container2.setPreferredSize(container2Dim);
+
+        container1.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
+
+/*        container2.setLayout(new GridBagLayout());
+        GridBagConstraints constraints2 = new GridBagConstraints();*/
+
+        GridLayout container2Grid = new GridLayout(3, 2);
+        container2Grid.setVgap(3);
+        container2Grid.setHgap(3);
+        container2.setLayout(container2Grid);
+
+        container2.getMaximumSize();
+//        container2.setLayout(new GridLayout(3, 2));
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+/*        GridLayout panelGrid = new GridLayout(2, 1);
+        panel.setLayout(panelGrid);*/
+
+//        panel.setLayout(new FlowLayout());
 
 
 
         String colorStr = "";
         instr = new JLabel("Click a button!", JLabel.CENTER);
         MyListener labelListener = new MyListener(instr);
-        instr.addPropertyChangeListener(labelListener);
+//        instr.addPropertyChangeListener(labelListener);
 
         final JLabel timerLabel = new JLabel("", JLabel.CENTER);
         final JButton restartButton = new JButton("Play Again");
@@ -118,9 +143,9 @@ public class MainGameFrame extends JFrame implements ActionListener {
         restartButton.setEnabled(false);
         restartButton.setRolloverEnabled(false);
         restartButton.setFocusable(false);
-        final ScheduledExecutorService timerExecutor = Executors.newScheduledThreadPool(1);
-        secondsToWait = 4;
-        Runnable task = new Runnable() {
+//        final ScheduledExecutorService timerExecutor = Executors.newScheduledThreadPool(1);
+        secondsToWait = 11;
+        Runnable timerTask = new Runnable() {
             //            @Override
             public void run() {
                 secondsToWait--;
@@ -136,8 +161,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
                     restartButton.setFocusable(true);
                     restartButton.addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
+                            container1.removeAll();
                             container2.removeAll();
-                            panel.removeAll();
                             GamePanel();
                         }
                     });
@@ -145,19 +170,26 @@ public class MainGameFrame extends JFrame implements ActionListener {
                 }
             }
         };
-        timerExecutor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
+        timerExecutor.scheduleAtFixedRate(timerTask, 1, 1, TimeUnit.SECONDS);
 
-        GridLayout grid = new GridLayout(3, 2);
-        container2.setLayout(grid);
+/*        GridLayout grid = new GridLayout(3, 2);
+        container2.setLayout(grid);*/
 
-        Dimension bDimension = new Dimension(100, 50);
-        List<JButton> jButtonList = new ArrayList<JButton>();
-        JButton button1 = new JButton();
-        JButton button2 = new JButton();
-        JButton button3 = new JButton();
-        JButton button4 = new JButton();
-        JButton button5 = new JButton();
-        JButton button6 = new JButton();
+        Dimension bDimension = new Dimension(50, 50);
+        JButton button1 = new JButton(BTN_TEXT);
+//        button1.setPreferredSize(bDimension);
+        JButton button2 = new JButton(BTN_TEXT);
+//        button2.setPreferredSize(bDimension);
+        JButton button3 = new JButton(BTN_TEXT);
+//        button3.setPreferredSize(bDimension);
+        JButton button4 = new JButton(BTN_TEXT);
+//        button4.setPreferredSize(bDimension);
+        JButton button5 = new JButton(BTN_TEXT);
+//        button5.setPreferredSize(bDimension);
+        JButton button6 = new JButton(BTN_TEXT);
+/*        button6.setMinimumSize(bDimension);
+        button6.setMaximumSize(bDimension);*/
+//        button6.setPreferredSize(bDimension);
 
         jButtonArray = new JButton[]{button1, button2, button3, button4, button5, button6};
         int[] randomInts = new Random().ints(0, 22).distinct().limit(6).toArray();
@@ -170,7 +202,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
 
         for (int i = 0; i < jButtonArray.length; i++) {
-            jButtonArray[i].setSize(bDimension);
+//            jButtonArray[i].setSize(100, 50);
+            jButtonArray[i].setFont(jButtonArray[i].getFont().deriveFont(BTN_SIZE));
             jButtonArray[i].setBackground(buttonColors[randomInts[i]]);
             jButtonArray[i].setMnemonic(KeyEvent.VK_E);
             jButtonArray[i].setActionCommand("enable");
@@ -184,20 +217,24 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
                     if (finalI == targetColorIndex) {
 
-                        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-                        secondsToWait = 4;
+//                        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+                        buttonWait = 3;
                         Runnable task = new Runnable() {
                             //            @Override
                             public void run() {
-                                secondsToWait--;
-                                if (secondsToWait == 3) {
-                                    instr.setText("Click a button!"); //+ " Current time is: " + System.currentTimeMillis());
-                                } else if (secondsToWait == 2) {
+                                buttonWait--;
+                                if (buttonWait == 2) {
+//                                    instr.setText("Click a button!"); //+ " Current time is: " + System.currentTimeMillis());
                                     instr.setText("You were right!");
-                                } else if (secondsToWait == 1) {
+                                    timerExecutor.shutdownNow();
+                                /*} else if (buttonWait == 2) {
+                                    instr.setText("You were right!");
+                                    timerExecutor.shutdownNow();*/
+                                } else if (buttonWait == 1) {
+                                    container1.removeAll();
                                     container2.removeAll();
                                     GamePanel();
-                                } else if (secondsToWait == 0) {
+                                } else if (buttonWait == 0) {
                                     executor.shutdown();
                                 }
                             }
@@ -215,9 +252,22 @@ public class MainGameFrame extends JFrame implements ActionListener {
                     }
                 }
             });
+            // Place color buttons
+/*
+            constraints2.fill = GridBagConstraints.HORIZONTAL;
+            constraints2.gridx = 0;
+            constraints2.gridy = 0;
+            constraints2.ipady = 1;
+            constraints2.anchor = GridBagConstraints.PAGE_END;
+            constraints2.insets = new Insets(10, 0, 0, 0);
+            constraints2.gridwidth = 2;
+            constraints2.gridheight = 3;
+*/
 
             container2.add(jButtonArray[i]);
         }
+
+
 
         getColorStrings(randomInts);
 
@@ -227,14 +277,14 @@ public class MainGameFrame extends JFrame implements ActionListener {
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.ipady = 1;
-        panel.add(instr, constraints);
+        container1.add(instr, constraints);
 
         // Place timer JLabel
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
         constraints.gridy = 1;
-        constraints.ipady = 5;
-        panel.add(timerLabel, constraints);
+        constraints.ipady = 2;
+        container1.add(timerLabel, constraints);
 
         // Place restart JButton
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -242,24 +292,82 @@ public class MainGameFrame extends JFrame implements ActionListener {
         constraints.gridy = 2;
 //        constraints.ipady = 1;
         constraints.insets = new Insets(5, 5, 5, 5);
-        panel.add(restartButton, constraints);
+        container1.add(restartButton, constraints);
 
         // Place target color instruction JLabel
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
         constraints.gridy = 3;
         constraints.ipady = 1;
-        panel.add(targetColor, constraints);
+        container1.add(targetColor, constraints);
 
         // Place color buttons
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 0;
-        constraints.gridy = 4;
-        constraints.ipady = 1;
-        constraints.anchor = GridBagConstraints.PAGE_END;
-        constraints.insets = new Insets(10, 0, 0, 0);
-        constraints.gridwidth = 2;
-        panel.add(container2, constraints);
+/*        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 0;
+        constraints2.gridy = 0;
+        constraints2.ipady = 1;
+        constraints2.anchor = GridBagConstraints.PAGE_END;
+        constraints2.insets = new Insets(10, 0, 0, 0);
+        constraints2.gridwidth = 2;
+        constraints2.gridheight = 3;*/
+
+/*        for (int i = 0; i < jButtonArray.length; i++) {
+            container2.add(jButtonArray[i], constraints2);
+        }*/
+
+        // Place color buttons in their container -----------------------------------------------
+        //---------------------------------------------------------------------------------------
+/*        // Button 1
+        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 0;
+        constraints2.gridy = 0;
+        constraints2.gridheight = 50;
+        constraints2.gridwidth = 100;
+        container2.add(button1, constraints2);
+
+        // Button 2
+        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 1;
+        constraints2.gridy = 0;
+        constraints2.gridheight = 50;
+        constraints2.gridwidth = 100;
+        container2.add(button2, constraints2);
+
+        // Button 3
+        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 0;
+        constraints2.gridy = 1;
+        constraints2.gridheight = 50;
+        constraints2.gridwidth = 100;
+        container2.add(button3, constraints2);
+
+        // Button 4
+        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 1;
+        constraints2.gridy = 1;
+        constraints2.gridheight = 50;
+        constraints2.gridwidth = 100;
+        container2.add(button4, constraints2);
+
+        // Button 5
+        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 0;
+        constraints2.gridy = 2;
+        constraints2.gridheight = 50;
+        constraints2.gridwidth = 100;
+        container2.add(button5, constraints2);
+
+        // Button 6
+        constraints2.fill = GridBagConstraints.HORIZONTAL;
+        constraints2.gridx = 1;
+        constraints2.gridy = 2;
+        constraints2.gridheight = 50;
+        constraints2.gridwidth = 100;
+        container2.add(button6, constraints2);*/
+
+
+        panel.add(container1);
+        panel.add(container2);
 
         add(panel);
         setVisible(true);
@@ -283,24 +391,25 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     private void changeInstructionText(final int index) throws InterruptedException {
         System.out.println("Now inside changeInstructionText() method.");
-        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-        secondsToWait = 3;
-        Runnable task = new Runnable() {
+//        final ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        final ScheduledExecutorService instrExecutor = Executors.newScheduledThreadPool(1);
+        instrButtonWait = 2;
+        Runnable instrTask = new Runnable() {
 
             public void run() {
-                secondsToWait--;
-                if (secondsToWait == 2) {
-                    instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); //+ " Current time is: " + System.currentTimeMillis());
+                instrButtonWait--;
+                if (instrButtonWait == 1) {
+                    instr.setText("Wrong one!!" + " Try again!"/*" You chose " + colors.get(index) + "!"*/); //+ " Current time is: " + System.currentTimeMillis());
                     System.out.println("The label is now: " + instr.getText());
-                } else if (secondsToWait == 1) {
-                    instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); /*+ " Current time is: " + System.currentTimeMillis());*/
-                    System.out.println("The label is now: " + instr.getText());                    // do nothing
-                } else if (secondsToWait == 0) {
-                    executor.shutdown();
+/*                } else if (instrButtonWait == 1) {
+                    instr.setText("Wrong one!!" + " You chose " + colors.get(index) + "!"); *//*+ " Current time is: " + System.currentTimeMillis());*//*
+                    System.out.println("The label is now: " + instr.getText());     */               // do nothing
+                } else if (instrButtonWait == 0) {
+                    instrExecutor.shutdown();
                 }
             }
         };
-        executor.scheduleAtFixedRate(task, 1, 1, TimeUnit.SECONDS);
+        instrExecutor.scheduleAtFixedRate(instrTask, 1, 1, TimeUnit.SECONDS);
 
         System.out.println("Now leaving changeInstructionText() method." + " Current time is: " + System.currentTimeMillis());
     }
