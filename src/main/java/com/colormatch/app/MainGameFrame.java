@@ -34,10 +34,10 @@ import java.util.concurrent.locks.ReentrantLock;
  * */
 
 /***
- * TODO - Remove color button clickability upon time exhaustion
  * TODO - Add scoring
  * TODO - Replace target color label text with color graphic
  * TODO - Remove unused code
+ * DONE - Remove color button clickability upon time exhaustion
  * DONE - Make incorrect confirmation message display quicker
  * DONE - Lengthen timer duration
  * DONE - Set timer to stop on correct color button click
@@ -155,6 +155,11 @@ public class MainGameFrame extends JFrame implements ActionListener {
                     instr.setText("Too late! You ran out of time!");
                     timerLabel.setText("Time remaining: " + secondsToWait + " seconds.");
 //                    panel.remove(timerLabel);
+                    for(int i=0; i < jButtonArray.length; i++) {
+                        for(ActionListener aL : jButtonArray[i].getActionListeners()) {
+                            jButtonArray[i].removeActionListener(aL);
+                        }
+                    }
                     restartButton.setVisible(true);
                     restartButton.setEnabled(true);
                     restartButton.setRolloverEnabled(true);
@@ -167,6 +172,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
                         }
                     });
                     timerExecutor.shutdown();
+
                 }
             }
         };
